@@ -13,46 +13,49 @@ public class AlexTest {
 
     @Test
     public void getFriendsRetrunsFriendsList() throws Exception {
-        CatBehavior feline = mock(CatBehavior.class);
-        Alex alex = new Alex(feline);
+        Predator predator = mock(Predator.class);
+        Alex alex = new Alex(predator);
 
         assertEquals(List.of("Marty", "Melman", "Gloria"), alex.getFriends());
     }
 
     @Test
     public void getPlaceOfLivingReturnsZoo() throws Exception {
-        CatBehavior feline = mock(CatBehavior.class);
-        Alex alex = new Alex(feline);
+        Predator predator = mock(Predator.class);
+        Alex alex = new Alex(predator);
 
         assertEquals("Central Park Zoo", alex.getPlaceOfLiving());
     }
 
     @Test
     public void getKittensReturnsZero() throws Exception {
-        CatBehavior feline = mock(CatBehavior.class);
-        Alex alex = new Alex(feline);
+        Predator predator = mock(Predator.class);
+        Alex alex = new Alex(predator);
 
         assertEquals(0, alex.getKittens());
     }
 
     @Test
     public void doesHaveManeReturnsTrue() throws Exception {
-        CatBehavior feline = mock(CatBehavior.class);
-        Alex alex = new Alex(feline);
+        Predator predator = mock(Predator.class);
+        Alex alex = new Alex(predator);
 
         assertTrue(alex.doesHaveMane());
     }
 
     @Test
     public void getFoodReturnsPredatorFood() throws Exception {
-        CatBehavior feline = mock(CatBehavior.class);
-        Alex alex = new Alex(feline);
+        Predator predator = mock(Predator.class);
+        Alex alex = new Alex(predator);
 
-        Mockito.when(feline.getFood("Хищник"))
+        Mockito.when(predator.eatMeat())
                 .thenReturn(List.of("Животные", "Птицы", "Рыба"));
 
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), alex.getFood());
+        assertEquals(
+                List.of("Животные", "Птицы", "Рыба"),
+                alex.getFood()
+        );
 
-        verify(feline).getFood("Хищник");
+        verify(predator).eatMeat();
     }
 }
