@@ -12,43 +12,43 @@ import static org.mockito.Mockito.*;
 public class AlexTest {
 
     @Test
-    public void getFriendsRetrunsFriendsList() throws Exception {
-        Predator predator = mock(Predator.class);
-        Alex alex = new Alex(predator);
+    public void getFriendsReturnsFriendsList() throws Exception {
+        Feline feline = mock(Feline.class);
+        Alex alex = new Alex(feline);
 
         assertEquals(List.of("Marty", "Melman", "Gloria"), alex.getFriends());
     }
 
     @Test
     public void getPlaceOfLivingReturnsZoo() throws Exception {
-        Predator predator = mock(Predator.class);
-        Alex alex = new Alex(predator);
+        Feline feline = mock(Feline.class);
+        Alex alex = new Alex(feline);
 
         assertEquals("Central Park Zoo", alex.getPlaceOfLiving());
     }
 
     @Test
     public void getKittensReturnsZero() throws Exception {
-        Predator predator = mock(Predator.class);
-        Alex alex = new Alex(predator);
+        Feline feline = mock(Feline.class);
+        Alex alex = new Alex(feline);
 
         assertEquals(0, alex.getKittens());
     }
 
     @Test
     public void doesHaveManeReturnsTrue() throws Exception {
-        Predator predator = mock(Predator.class);
-        Alex alex = new Alex(predator);
+        Feline feline = mock(Feline.class);
+        Alex alex = new Alex(feline);
 
         assertTrue(alex.doesHaveMane());
     }
 
     @Test
     public void getFoodReturnsPredatorFood() throws Exception {
-        Predator predator = mock(Predator.class);
-        Alex alex = new Alex(predator);
+        Feline feline = mock(Feline.class);
+        Alex alex = new Alex(feline);
 
-        Mockito.when(predator.eatMeat())
+        Mockito.when(feline.eatMeat())
                 .thenReturn(List.of("Животные", "Птицы", "Рыба"));
 
         assertEquals(
@@ -56,6 +56,6 @@ public class AlexTest {
                 alex.getFood()
         );
 
-        verify(predator).eatMeat();
+        verify(feline).eatMeat();
     }
 }

@@ -11,38 +11,42 @@ import static org.junit.Assert.assertThrows;
 public class LionTest {
     @Test
     public void getKittensReturnsOne() throws Exception {
-        Predator predator = Mockito.mock(Predator.class);
+        Feline feline = Mockito.mock(Feline.class);
 
-        Lion lion = new Lion("Самец", predator);
+        Mockito.when(feline.getKittens()).thenReturn(1);
+
+        Lion lion = new Lion("Самец", feline);
 
         assertEquals(1, lion.getKittens());
+
+        Mockito.verify(feline).getKittens();
 
     }
 
     @Test
     public void getFoodReturnsPredatorFood() throws Exception {
-        Predator predator = Mockito.mock(Predator.class);
+        Feline feline = Mockito.mock(Feline.class);
 
-        Mockito.when(predator.eatMeat())
+        Mockito.when(feline.eatMeat())
                 .thenReturn(List.of("Животные", "Птицы", "Рыба"));
 
-        Lion lion = new Lion("Самец", predator);
+        Lion lion = new Lion("Самец", feline);
 
         assertEquals(
                 List.of("Животные", "Птицы", "Рыба"),
                 lion.getFood()
         );
 
-        Mockito.verify(predator).eatMeat();
+        Mockito.verify(feline).eatMeat();
     }
 
     @Test
     public void wrongSexThrowsException() {
-        Predator predator = Mockito.mock(Predator.class);
+        Feline feline = Mockito.mock(Feline.class);
 
         Exception exception = assertThrows(
                 Exception.class,
-                () -> new Lion("Неизвестно", predator)
+                () -> new Lion("Неизвестно", feline)
         );
 
         assertEquals(
